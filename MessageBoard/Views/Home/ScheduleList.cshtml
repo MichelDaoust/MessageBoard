@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "ScheduleList";
+}
+
+<h2>ScheduleList From Server</h2>
+
+<div>
+    <div class="message-header">
+        <h1>Schedule List Form Server MVC</h1>
+        <p class="lead">Updated Schedule List...</p>
+        <div>Schedule games count: @ViewBag.ScheduleCount</div>
+    </div>
+
+    <div class="progress progress-striped active" data-ng-show="isBusy">
+        <div class="bar" style="width: 100%;"></div>
+    </div>
+
+    <div class="messages">
+        @for (var i = 0; i < ViewBag.ScheduleCount; i++)
+            {<div class="title span6">
+            <div class="message row">
+                <a href="/schedule/@i">Partie @i</a>
+            </div>
+        </div>}
+    </div>
+</div>
