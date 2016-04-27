@@ -72,12 +72,15 @@ namespace MessageBoard.Data
       }
     }
 
-  /*micmic
-    public IQueryable<Schedule> getScheduleList()
+    public IQueryable<Game> GetScheduleList()
     {
-            _ctx.ScheduleList.Include("ScheduleList");
-            
+        return _ctx.ScheduleList;
     }
-  */
+
+    public Game GetInfoByGame(int Game)
+    {
+       return _ctx.ScheduleList.Find(Game);
+    }
+
   }
 }

@@ -211,6 +211,7 @@
     <Compile Include="Data\MessageBoardMigrationsConfiguration.cs" />
     <Compile Include="Data\MessageBoardRepository.cs" />
     <Compile Include="Data\Reply.cs" />
+    <Compile Include="Data\Game.cs" />
     <Compile Include="Data\Topic.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">

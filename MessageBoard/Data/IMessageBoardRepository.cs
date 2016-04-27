@@ -11,8 +11,12 @@ namespace MessageBoard.Data
     IQueryable<Topic> GetTopics();
     IQueryable<Topic> GetTopicsIncludingReplies();
     IQueryable<Reply> GetRepliesByTopic(int topicId);
+    IQueryable<Game> GetScheduleList();
+    Game GetInfoByGame(int Game);
 
-    bool Save();
+
+
+        bool Save();
 
     bool AddTopic(Topic newTopic);
     bool AddReply(Reply newReply);

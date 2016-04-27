@@ -4,21 +4,21 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using MessageBoard.Data;
 
 namespace MessageBoard.Controllers
 {
     public class ScheduleController : ApiController
     {
-        /*micmic
         private IMessageBoardRepository _repo;
-        public RepliesController(IMessageBoardRepository repo)
+        public ScheduleController(IMessageBoardRepository repo)
         {
           _repo = repo;
         }
 
-        public IEnumerable<Reply> Get(int topicId)
+        public Game Get(int Game)
         {
-          return _repo.GetRepliesByTopic(topicId);
+          return _repo.GetInfoByGame(Game);
         }
 
         public HttpResponseMessage Post(int topicId, [FromBody]Reply newReply)
@@ -39,8 +39,6 @@ namespace MessageBoard.Controllers
 
           return Request.CreateResponse(HttpStatusCode.BadRequest);
         }
-
-    */
 
 
     }

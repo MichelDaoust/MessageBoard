@@ -15,58 +15,65 @@ namespace MessageBoard.Data
       this.AutomaticMigrationsEnabled = true;
     }
 
-    protected override void Seed(MessageBoardContext context)
-    {
-      base.Seed(context);
+        protected override void Seed(MessageBoardContext context)
+        {
+            base.Seed(context);
 
 #if DEBUG
-      if (context.Topics.Count() == 0)
-      {
-        var topic = new Topic()
-        {
-          Title = "I love MVC",
-          Created = DateTime.Now,
-          Body = "I love ASP.NET MVC and I want everyone to know it",
-          Replies = new List<Reply>()
-          {
-            new Reply()
+            if (context.Topics.Count() == 0)
             {
-               Body = "I love it too!",
-               Created = DateTime.Now
-            },
-            new Reply()
+                var topic = new Topic()
+                {
+                    Title = "I love MVC",
+                    Created = DateTime.Now,
+                    Body = "I love ASP.NET MVC and I want everyone to know it",
+                    Replies = new List<Reply>()
+                {
+                new Reply()
+                {
+                    Body = "I love it too!",
+                    Created = DateTime.Now
+                },
+                new Reply()
+                {
+                    Body = "Me too",
+                    Created = DateTime.Now
+                },
+                new Reply()
+                {
+                    Body = "Aw shucks",
+                    Created = DateTime.Now
+                },
+                }
+
+                };
+            }
+
+            if (context.ScheduleList.Count() == 0)
             {
-               Body = "Me too",
-               Created = DateTime.Now
-            },
-            new Reply()
+                var game = new Game()
+                {
+                    Title = "Partie 1"
+                };
+
+                context.ScheduleList.Add(game);
+
+                game = new Game()
+                {
+                    Title = "Partie 1"
+                };
+
+                context.ScheduleList.Add(game);
+            }
+
+            try
             {
-               Body = "Aw shucks",
-               Created = DateTime.Now
-            },
-          }
-        };
-
-        context.Topics.Add(topic);
-
-        var anotherTopic = new Topic()
-        {
-          Title = "I like Ruby too!",
-          Created = DateTime.Now,
-          Body = "Ruby on Rails is popular"
-        };
-
-        context.Topics.Add(anotherTopic);
-
-        try
-        {
-          context.SaveChanges();
-        }
-        catch (Exception ex)
-        {
-          var msg = ex.Message;
-        }
-      }
+                context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                var msg = ex.Message;
+            }
 #endif
     }
   }
