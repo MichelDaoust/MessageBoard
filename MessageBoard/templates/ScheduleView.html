@@ -12,7 +12,7 @@
   <div class="messages">
     <div class="message row" data-ng-repeat="i in data.schedulelist">
       <div class="title span6">
-        <a data-ng-href="#/schedule/{{ i }}">{{ i }}</a>
+        <a data-ng-href="#/schedule/{{ i.id }}">{{ i.title }}</a>
       </div>
     </div>
   </div>

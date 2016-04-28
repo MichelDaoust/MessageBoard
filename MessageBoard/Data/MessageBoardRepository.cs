@@ -72,6 +72,21 @@ namespace MessageBoard.Data
       }
     }
 
+    public bool AddGame(Game newGame)
+    {
+        try
+        {
+            _ctx.ScheduleList.Add(newGame);
+            return true;
+        }
+        catch (Exception ex)
+        {
+            // TODO log this error
+            return false;
+        }
+    }
+
+
     public IQueryable<Game> GetScheduleList()
     {
         return _ctx.ScheduleList;
@@ -81,6 +96,8 @@ namespace MessageBoard.Data
     {
        return _ctx.ScheduleList.Find(Game);
     }
+
+
 
   }
 }

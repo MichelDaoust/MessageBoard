@@ -76,8 +76,10 @@ namespace MessageBoard.Controllers
     [Authorize]
     public ActionResult schedulelist()
     {
-            ViewBag.ScheduleCount = 3;
-            return View();
+
+            var scheduleList = _repo.GetScheduleList().ToList();
+            ViewBag.ScheduleCount = scheduleList.Count;
+            return View(scheduleList);
     }
 
     [Authorize(Roles="Admin")]

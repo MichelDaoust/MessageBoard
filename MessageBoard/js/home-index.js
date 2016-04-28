@@ -31,6 +31,7 @@ module.factory("dataService", ["$http", "$q", function ($http, $q) {
   var _schedulelist = [];
   var _topics = [];
   var _isInit = false;
+  var _isInitSchedule = false;
 
   var _isReady = function () {
     return _isInit;
@@ -39,7 +40,25 @@ module.factory("dataService", ["$http", "$q", function ($http, $q) {
 
   var _getScheduleList = function()
   {
-      angular.copy(["Partie 1", "Partie 2", "Partie 3"], _schedulelist);
+
+      var deferred = $q.defer();
+
+      $http.get("/api/v1/Schedule")
+        .then(function (result) {
+            // Successful
+            angular.copy(result.data, _schedulelist);
+            _isInitSchedule = true;
+            deferred.resolve();
+        },
+        function () {
+            // Error
+            deferred.reject();
+        });
+
+      return deferred.promise;
+
+
+      //angular.copy(["Partie 1", "Partie 2", "Partie 3"], _schedulelist);
   }
 
   var _getTopics = function () {
@@ -141,6 +160,9 @@ module.factory("dataService", ["$http", "$q", function ($http, $q) {
 
     return deferred.promise;
   };
+
+
+
 
   return {
     topics: _topics,

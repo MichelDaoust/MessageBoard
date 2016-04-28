@@ -21,23 +21,26 @@ namespace MessageBoard.Controllers
           return _repo.GetInfoByGame(Game);
         }
 
-        public HttpResponseMessage Post(int topicId, [FromBody]Reply newReply)
+
+        public IEnumerable<Game> Get()
         {
-          if (newReply.Created == default(DateTime))
-          {
-            newReply.Created = DateTime.UtcNow;
-          }
+            IQueryable<Game> result = _repo.GetScheduleList();
+            return result;
+        }
 
-          newReply.TopicId = topicId;
+        public HttpResponseMessage Post(int GameID, [FromBody]Game newGame)
+        {
 
-          if (_repo.AddReply(newReply) &&
-              _repo.Save())
-          {
-            return Request.CreateResponse(HttpStatusCode.Created,
-              newReply);
-          }
+            newGame.Id = GameID;
 
-          return Request.CreateResponse(HttpStatusCode.BadRequest);
+            if (_repo.AddGame(newGame) &&
+                _repo.Save())
+            {
+                return Request.CreateResponse(HttpStatusCode.Created,
+                  newGame);
+            }
+
+            return Request.CreateResponse(HttpStatusCode.BadRequest);
         }
 
 

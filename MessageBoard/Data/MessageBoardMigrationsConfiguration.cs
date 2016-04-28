@@ -60,7 +60,7 @@ namespace MessageBoard.Data
 
                 game = new Game()
                 {
-                    Title = "Partie 1"
+                    Title = "Partie 2"
                 };
 
                 context.ScheduleList.Add(game);

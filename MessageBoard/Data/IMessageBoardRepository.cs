@@ -14,11 +14,11 @@ namespace MessageBoard.Data
     IQueryable<Game> GetScheduleList();
     Game GetInfoByGame(int Game);
 
-
-
-        bool Save();
+    bool Save();
 
     bool AddTopic(Topic newTopic);
     bool AddReply(Reply newReply);
-  }
+    bool AddGame(Game newGame);
+
+    }
 }

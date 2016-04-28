@@ -1,4 +1,5 @@
-﻿@{
+﻿@model List<MessageBoard.Data.Game>
+@{
     ViewBag.Title = "ScheduleList";
 }
 
@@ -19,7 +20,7 @@
         @for (var i = 0; i < ViewBag.ScheduleCount; i++)
             {<div class="title span6">
             <div class="message row">
-                <a href="/schedule/@i">Partie @i</a>
+                <a href="/schedule/@Model[i].Id">@Model[i].Title</a>
             </div>
         </div>}
     </div>
